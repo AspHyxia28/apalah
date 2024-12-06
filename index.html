@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Spinner Face</title>
+    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+  </head>
+  <body>
+    <a-scene>
+      <a-camera>
+        <a-cursor></a-cursor>
+      </a-camera>
+      <a-sphere position="0 1.25 -5" radius="1.25" id="sphere" material="src: balls/1.jpeg" animation="property: rotation; to: 0 360 0; loop: true; dur: 5500; easing: linear"></a-sphere>
+      <a-cylinder position="1 0.75 -3" radius="0.5" height="1.5" id="cylinder" material="src: balls/4.jpg" animation="property: rotation; to: 0 360 0; loop: true; dur: 2000; easing: linear"></a-cylinder>
+      <a-plane position="0 0 -4" rotation="-90 0 0" width="4" height="4" color="#7BC8A4"></a-plane>
+      <a-box position="0 5.58 -8" width="8" height="5" depth="0.1" material="src: balls/honorable mention.jpg"></a-box>
+      <a-sky color="#ECECEC"></a-sky>
+    </a-scene>
+
+    <script>
+      const images = [
+        'balls/1.jpeg',
+        'balls/2.jpeg',
+        'balls/3.gif',
+        'balls/4.jpg',
+        'balls/5.png',
+        'balls/6.png',
+        'balls/7.png',
+        'balls/8.png',
+        'balls/9.png',
+        'balls/10.png'
+      ];
+      let sphereImageIndex = 0;
+      let cylinderImageIndex = 0;
+
+      document.querySelector('#sphere').addEventListener('click', function () {
+        sphereImageIndex = (sphereImageIndex + 1) % images.length;
+        this.setAttribute('material', `src: ${images[sphereImageIndex]}`);
+      });
+
+      document.querySelector('#cylinder').addEventListener('click', function () {
+        cylinderImageIndex = (cylinderImageIndex + 1) % images.length;
+        this.setAttribute('material', `src: ${images[cylinderImageIndex]}`);
+      });
+    </script>
+  </body>
+</html>
